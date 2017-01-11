@@ -1,0 +1,18 @@
+Refrence link: 
+https://github.com/yeoman/generator-angular
+
+
+
+Generate a Route 
+	1) yo angular:route myroute
+					myroute should be form nested form  ... parent.child
+					eg: 
+						operations-> updateOracleID so name of route will be 
+							"operations.updateOID"
+							
+	2) Now open the app.js scroll to last route. (It will be having "when" keyword) this is new ng-route, we need to change it to ui-route.
+			compare with above route and make ur new route similiar to others.
+			
+			
+				
+				

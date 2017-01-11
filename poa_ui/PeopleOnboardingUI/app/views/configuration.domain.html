@@ -1,0 +1,70 @@
+<button type="button" class="conf-domain-btn conf-domain-btn-default collapse-button" ng-click="isDomain()" >Domain</button>
+<hr>
+<div uib-collapse="domainCollapsed">
+	<div class="well well-lg">
+			<div class="collapse-row">
+				<div ui-grid="domainGridOptions" ui-grid-auto-resize ui-grid-pagination class="grid"></div>
+			</div>
+
+<div class="collapse-row">
+	<input class="btn btn-default" type="button" value="New Category" ng-click="addDomain()" align="center" style="float: right; ">
+
+</div>
+
+			
+			
+	</div>
+	<!-- 	<md-button ng-click="addDomain()" class=" btn md-raised" style="float:right; margin-right:20px;">New Category
+		</md-button> -->
+		
+		
+	</div>
+	
+		
+</div>
+
+
+<button type="button" class="conf-domain-btn conf-domain-btn-default collapse-button" ng-click="isCriteria()" ng-disabled="criteriaDisabled==true">Criteria</button>
+	<hr>
+<div uib-collapse="criteriaCollapsed">
+	<div class="well well-lg">
+
+		<div class="collapse-row">
+			<div ui-grid="criteriaGridOptions" ui-grid-auto-resize ui-grid-pagination class="grid">
+			</div>
+		</div>
+
+<div class="collapse-row">
+		<input class="btn btn-default" type="button" value="New Criteria" ng-click="addCriteria()" align="center" style="float: right; ">
+
+</div>
+
+			
+
+			
+			
+		</div>
+	<!-- 	<md-button ng-click="addCriteria()" class=" btn md-raised " style="float:right; margin-right:20px;">New Criteria
+		</md-button> -->
+		
+	</div>
+</div>
+
+<button type="button" class="conf-domain-btn conf-domain-btn-default collapse-button" ng-click="isTopic()" ng-disabled="topicDisabled==true">Topic</button>
+	<hr>
+<div uib-collapse="topicsCollapsed">
+
+	<div class="well well-lg">
+
+		<div class="collapse-row">
+			<div ui-grid="topicGridOptions" ui-grid-auto-resize ui-grid-pagination class="grid">
+			</div>
+		</div>
+
+<div class="collapse-row">
+		 <input class="btn btn-default" type="button" value="New Topic" ng-click="addTopic()" align="center" style="float: right; ">
+
+</div>	
+		</div>
+
+</div>

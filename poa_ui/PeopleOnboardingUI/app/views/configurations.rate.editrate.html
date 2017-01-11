@@ -1,0 +1,117 @@
+<!-- <div class="container-fluid"> -->
+
+		
+
+		<div class="panel panel-default">
+			<div class="panel-heading">Edit Rate Details</div>
+			<div class="panel-body">
+			
+				<form name="rateEditForm" >
+					<div class="row"></div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Rate Type</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<label class="form-control inactive"> {{rateObj.rateType}} </label>
+
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Category</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<label class="form-control inactive"> {{rateObj.category.categoryName}} </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Position</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<label class="form-control inactive">
+									{{rateObj.position.positionName}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Location</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<label class="form-control inactive">{{rateObj.location.city}} </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Domain</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<label class="form-control inactive"> {{rateObj.position.domain}}
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Rate</label>
+								<i class="asterisk">*</i>
+							</div>
+							<div class="col-md-8">
+								<input type="number" name="rate" class="form-control" ng-model="rateObj.rate" required autofocus="true" minlength="4">
+								<div ng-messages="rateEditForm.rate.$error" role="alert" class="inputValidation">
+			                        <div ng-message="required" ng-show="rateEditForm.rate.$dirty">This field is mandatory.</div>
+			                        <div ng-message="number">This field must be a valid Number</div>
+			                        <div ng-message="minlength">Rate must have 4 or more digits</div>
+			                    </div>
+
+                    </div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-md-4">
+								<label>Rate Status</label>
+							</div>
+							
+							<div class="col-md-4" >
+								<input type="radio"  value="true" name="isUsed" ng-model="rateObj.isUsed"  ng-checked= "isSelected(rateObj)" ng-click="radioButtonSelected()">
+								<label >Active</label>
+							</div>
+							<div class="col-md-4">
+								<input type="radio"  name="isUsed" value="false"  ng-model="rateObj.isUsed" ng-click="radioButtonSelected()"
+								 ng-checked="isNotSelected(rateObj)" >
+								<label>InActive</label>
+
+							</div>
+						</div>
+
+</div>
+					</div>
+					<button type="submit" ng-click="editRate()"  class="btn btn-default" style="float: right; position: relative;"
+						 ng-disabled="rateEditForm.$invalid">Save</button>
+					
+					<button type="submit" ng-click="cancel()" class="btn btn-default" style="float: right; position: relative;"
+						 >Cancel</button>
+				</form>
+			</div>
+
+		</div>
+	</div>

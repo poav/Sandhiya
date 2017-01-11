@@ -1,0 +1,91 @@
+<div ng-cloak>
+    <div class="panel-heading"></div>
+        <div class="panel panel-default">
+            <div class="panel-heading">New Dl </div>
+            <div class="panel-body">
+
+            <form name="newForm" >
+
+            <div class="row"></div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Email Id</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="email" name="email" class="form-control" 
+                        ng-model="newObject.email" ng-blur="checkIfDuplicate(null,null)" required ng-minlength="5">
+                        
+                    <div ng-messages="newForm.email.$error" role="alert" class="inputValidation">
+                        <div ng-message="required" ng-show="newForm.email.$dirty">This field is mandatory.</div>
+                        <div ng-message="email">This field must be a valid email Address</div>
+                        <div ng-message="minlength">Team name must be greater than 5</div>
+                        <div ng-show="(isNameNotValid==true) ">Dl name already exists</div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>  
+                        
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Team Name</label>
+                                </div>
+                                <div class="col-md-8">
+                                     
+        <select class="form-control" ng-model="newObject.projectBean.teamBean.teamName"  ng-options="team for team in teamNames" ng-change="getProjectList(newObject.projectBean.teamBean.teamName)" required></select>
+     
+
+                                </div>
+                            </div>
+                        </div>
+
+ <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Location</label>
+                                </div>
+                                <div class="col-md-8">
+
+        <select class="form-control" ng-model="newObject.locationBean" ng-options="location as location.city for location in locationList" ng-change="checkIfDuplicate(null,newObject.locationBean)" required>
+            
+
+        </select>
+     
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Project Name</label>
+                                </div>
+                                <div class="col-md-8">
+
+                                    
+        <select class="form-control" ng-model="newObject.projectBean"  ng-options="project as project.projectName for project in projectNames" ng-change="checkIfDuplicate(newObject.projectBean,null)"
+
+        required>
+          
+        </select>
+     
+
+                                </div>
+                            </div>
+                        </div>
+
+   
+                        <button type="submit"  ng-click="add()" class="btn btn-default" ng-disabled="isNameNotValid==true || newForm.$invalid " style="float: right;  position:relative;"
+                             >Save</button>
+                        <button type="button" class="btn btn-default" style="float: right; position:relative;" ng-click="cancel()"
+                             >Cancel</button>
+                    </form>
+        </div>
+
+    </div>
+</div>

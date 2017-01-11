@@ -1,0 +1,290 @@
+<md-dialog aria-label="Mango (Fruit)" flex>
+  <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Project DashBoard</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content flex-gt-md>
+          <md-content class="md-padding">
+            <h1 class="md-display-2"></h1>
+
+            <div>
+      <form name="userForm">  
+
+          <div layout-gt-md="row">
+          
+            <md-radio-group ng-model="selectedEditOption" layout="row">
+              <md-radio-button value="0"  ng-click="view(selectedEditOption)">Edit Current Assignment</md-radio-button>
+              <md-radio-button value="1" ng-click="view(selectedEditOption)">New Project Assignment</md-radio-button>
+              <md-radio-button value="2" ng-click="view(selectedEditOption)">Remove Person Staffing</md-radio-button>
+              <md-radio-button value="3" ng-click="view(selectedEditOption)">Initiate Offboarding</md-radio-button>
+            </md-radio-group>
+          </div>
+
+          <div ng-show="selectedEditOption==0">
+          
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Location
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedLocationName">
+              <md-option ng-repeat="location in locationList" value="{{location.city}}" ng-click="updateEmailDlListWhenLocationSelected(location.city)">
+                {{location.city}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Position
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedPositionName">
+              <md-option ng-repeat="position in positionList" value="{{position}}" >
+                {{position}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Rate Category
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedRateCategory">
+              <md-option ng-repeat="category in rateCategoryList" value="{{category}}"  ng->
+                {{category}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Rate Type
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedRateType">
+              <md-option ng-repeat="rateType in rateTypeList" value="{{rateType}}" >
+                {{rateType}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+            <md-datepicker ng-model="updatedStaffingStartDate"  flex="30" md-placeholder="start Date">
+            </md-datepicker>
+          </div>
+
+          <div layout-gt-md="row">
+            <md-datepicker ng-model="updatedStaffingEndDate"  flex="30" md-placeholder="end Date">
+            </md-datepicker>
+          </div>
+
+          <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-md flex=25>
+              <label>
+                <h4>DL to be added
+                </h4>
+              </label>
+            
+            <div ng-repeat="dl in emailDlList">
+              <md-checkbox ng-checked="selected[$index]" ng-click="toggle($index)"
+              aria-label="email Dl">
+                {{dl.email}}
+              </md-checkbox>
+            </div>
+
+          </md-input-container>
+
+          </div>
+
+
+          </div>
+
+          <div ng-show="selectedEditOption==1">
+
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Project
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedProjectName">
+              <md-option ng-repeat="project in projectList" value="{{project.projectName}}"       
+              ng-click="updateEmailDlListWhenProjectSelected(project.projectName)">
+                {{project.projectName}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Location
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedLocationName">
+              <md-option ng-repeat="location in locationList" value="{{location.city}}" ng-click="updateEmailDlListWhenLocationSelected(location.city)">
+                {{location.city}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+           <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Position
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedPositionName">
+              <md-option ng-repeat="position in positionList" value="{{position}}" >
+                {{position}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Rate Category
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedRateCategory">
+              <md-option ng-repeat="category in rateCategoryList" value="{{category}}"  ng->
+                {{category}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+          <div layout-gt-md="row">
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Rate Type
+              </h4>
+            </label>
+            
+            <md-select ng-model="updatedRateType">
+              <md-option ng-repeat="rateType in rateTypeList" value="{{rateType}}" >
+                {{rateType}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          </div>
+
+
+          <div layout-gt-md="row">
+            <md-datepicker ng-model="updatedStaffingStartDate"  flex="30" md-placeholder="start Date">
+            </md-datepicker>
+          </div>
+
+          <div layout-gt-md="row">
+            <md-datepicker ng-model="updatedStaffingEndDate"  flex="30" md-placeholder="end Date">
+            </md-datepicker>
+          </div>
+
+          <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-md flex=25>
+              <label>
+                <h4>DL to be added
+                </h4>
+              </label>
+            
+            <div ng-repeat="dl in emailDlList">
+              <md-checkbox ng-checked="selected[$index]" ng-click="toggle($index)" 
+              aria-label="email Dl">
+                {{dl.email}}
+              </md-checkbox>
+            </div>
+
+          </md-input-container>
+
+          </div>
+          </div>
+
+          <div ng-show="selectedEditOption==2">
+
+          <div layout-gt-md="row">
+
+          </div>
+
+          <div ng-show="selectedEditOption==3">
+
+          <div layout-gt-md="row">
+              <md-datepicker ng-model="staffingEndDateNew"  flex="30" md-placeholder="Onboarding Initiation Date">
+              </md-datepicker>
+          </div>
+
+            <div layout-gt-md="row">
+
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>
+                  <h4>Offboarding comments
+                  </h4>
+                </label>
+                <input ng-model="offboardingComments" >
+              </md-input-container>
+
+            </div>
+
+          </div>
+        
+      </form>
+    </div>
+  </md-content>
+        
+        
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <span flex ></span>
+      
+      <md-button ng-click="update()" style="margin-right:20px;" >
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

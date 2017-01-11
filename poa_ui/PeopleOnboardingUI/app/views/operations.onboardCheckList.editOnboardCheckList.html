@@ -1,0 +1,329 @@
+<md-dialog>
+    <!-- <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Onboarding CheckList</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content flex-gt-md>
+          <md-content class="md-padding">
+            <h1 class="md-display-2"></h1>
+
+            <div>
+      <form name="userForm">  
+
+        <div layout-gt-md="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Name
+              </h4>
+            </label>
+            <input ng-model="editedObject.personStaffingBean.person.personName" >
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-md>
+            <label>
+              <h4>Oracle Id
+              </h4>
+            </label>
+            <input ng-model="editedObject.personStaffingBean.person.personOracleId" >
+          </md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-xs>
+             <label>
+              <h4>Onboarding Status
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.onboardingStatus">
+              <md-option ng-repeat="status in statusList" value="{{status}}" >
+                {{status}}
+              </md-option>
+            </md-select>
+            </md-input-container>
+
+        </div>
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Added in Dl
+              </h4>
+            </label>
+      
+             <md-select ng-model="editedObject.addedInDl">
+              <md-option ng-repeat="option in optionsList" value="{{selectedValue(option)}}" >
+                {{option}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Added in RS3
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.addedInRS3">
+              <md-option ng-repeat="option in optionsList" value="{{selectedValue(option)}}" >
+                {{option}}
+              </md-option>
+            </md-select>
+            
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Is Onsite
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.isOnsite">
+              <md-option ng-repeat="option in optionsList" value="{{selectedValue(option)}}" >
+                {{option}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+
+
+          
+        </div>
+
+          <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Has previously worked for Client
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.hasPreviouslyWorkedForClient">
+              <md-option ng-repeat="option in optionsList" value="{{selectedValue(option)}}" >
+                {{option}}
+              </md-option>
+            </md-select>
+           
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Has Sapient Laptop
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.hasSapientLaptop">
+              <md-option ng-repeat="option in optionsList" value="{{selectedValue(option)}}" >
+                {{option}}
+              </md-option>
+            </md-select>
+        
+          </md-input-container>
+          
+        </div>
+
+          <div layout-gt-xs="row">
+
+          
+          <md-input-container class="md-block" flex-gt-md>
+            <label>
+              <h4>BackGround Check Status
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.backgroundCheckStatus">
+              <md-option ng-repeat="bgcStatus in bgcStatusList" value="{{bgcStatus}}" >
+                {{bgcStatus}}
+              </md-option>
+            </md-select>
+           
+          </md-input-container>
+
+        </div>
+
+
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="column">
+          <label><h4>Date Background Check Forms Submitted</h4></label>
+          <md-datepicker ng-model="editedObject.backgroundCheckSubmittedDate"  md-placeholder="Date Background Check Forms Submitted">
+          </md-datepicker>   
+          </div>
+          <div flex-gt-sm layout="column">
+                    <label><h4>Date BackgroundCheck Done</h4></label>
+
+          <md-datepicker ng-model="editedObject.backgroundCheckDoneDate"  md-placeholder="DateBackgroundCheck Done">
+          </md-datepicker>
+        </div>
+          
+        </div>
+
+        <div layout-gt-sm="row">
+          <div flex-gt-sm layout="column">
+          <label><h4>Date candidate entered into Client Vendor Management System</h4></label>
+          <md-datepicker ng-model="editedObject.personAddedInClientVendorManagementSystemDate"  md-placeholder="Date candidate entered into Client Vendor Management System">
+          </md-datepicker>   
+          </div>
+          <div flex-gt-sm layout="column">
+          <label><h4>Date candidate approved into Client Vendor Management System</h4></label>
+
+          <md-datepicker ng-model="editedObject.personApprovedInClientVendorManagementSystemDate"  
+          md-placeholder="Date candidate approved into Client Vendor Management System">
+          </md-datepicker>
+        </div>
+          
+        </div>
+        
+      </form>
+    </div>
+  </md-content>
+        
+        
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <span flex></span>
+      
+      <md-button ng-click="update()" style="margin-right:20px;" >
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form> -->
+    <div class="panel panel-default" ng-cloak>
+        <div class="panel-heading">Edit Onboarding Checklist Details</div>
+        <div class="panel-body">
+            <form name="editChecklistForm">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Name</label>
+                            </div>
+                            <div class="col-lg-4">
+                                {{editedObject.personStaffingBean.person.personName}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Oracle ID</label>
+                            </div>
+                            <div class="col-lg-4">
+                                {{editedObject.personStaffingBean.person.personOracleId}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Is Onsite</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <md-input-container ng-init="editedObject.isOnsite2=selectedValue(editedObject.isOnsite)">
+                                    <md-switch ng-model="editedObject.isOnsite2">{{editedObject.isOnsite2 ? "Yes" : "No"}}</md-switch>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Onboarding status {{editedObject.onboardingStatus}}</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <select ng-model="editedObject.onboardingStatus" class="form-control">
+                                    <option ng-repeat="status in statusList" value="{{status}}">
+                                        {{status}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Added in DL</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <md-input-container ng-init="editedObject.addedInDl2=selectedValue(editedObject.addedInDl)">
+                                    <md-switch ng-model="editedObject.addedInDl2">{{editedObject.addedInDl2 ? "Yes" : "No"}}</md-switch>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Added in RS3</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <md-input-container ng-init="editedObject.addedInRS32=selectedValue(editedObject.addedInRS3)">
+                                    <md-switch ng-model="editedObject.addedInRS32">{{editedObject.addedInRS32 ? "Yes" : "No"}}</md-switch>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Has Previously Worked For Client </label>
+                            </div>
+                            <div class="col-lg-4">
+                                <md-input-container>
+                                    <md-switch ng-model="editedObject.hasPreviouslyWorkedForClient">{{editedObject.hasPreviouslyWorkedForClient ? "Yes" : "No"}}</md-switch>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Has Sapient Laptop</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <md-input-container>
+                                    <md-switch ng-model="editedObject.hasSapientLaptop">{{editedObject.hasSapientLaptop ? "Yes" : "No"}}</md-switch>
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Date Background Check Forms Submitted</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input id="" ng-model="editedObject.backgroundCheckSubmittedDate" name="" type="date" placeholder="" class="input-xlarge form-control" onkeydown="return false">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Background Check Status </label>
+                            </div>
+                            <div class="col-lg-4">
+                                <select ng-model="editedObject.backgroundCheckStatus" class="form-control">
+                                    <option ng-repeat="bgcStatus in bgcStatusList" value="{{bgcStatus}}">
+                                        {{bgcStatus}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Date BackgroundCheck Done</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input id="" ng-model="editedObject.backgroundCheckDoneDate" name="" type="date" placeholder="" class="input-xlarge form-control" onkeydown="return false">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Date candidate entered into Client Vendor Mangement System</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input id="" ng-model="editedObject.personAddedInClientVendorManagementSystemDate" name="" type="date" placeholder="" class="input-xlarge form-control" onkeydown="return false">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <label class="" for="employeeName">Date candidate approved into Client Vendor Mangement System</label>
+                            </div>
+                            <div class="col-lg-4">
+                                <input id="" ng-model="editedObject.personApprovedInClientVendorManagementSystemDate" name="" type="date" placeholder="" class="input-xlarge form-control" onkeydown="return false">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-8">
+                            </div>
+                            <div class="col-lg-4">
+                                <input type="submit" name="submit" ng-click="update()" class="btn btn-default md-raised">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</md-dialog>

@@ -1,0 +1,134 @@
+       <!--  <div class="container-fluid"> -->
+<div class="panel panel-default">
+    <div class="panel-heading">Add New Rate </div>
+                <div class="panel-body">
+
+                    <form name="newRateForm" ng-submit="addRate()">
+
+                     
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Rate Type</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-8">
+
+                                     
+        <select class="form-control" ng-model="newRateObject.rateType" ng-options="rateType for rateType in rateTypes" ng-change="checkIfRateExists()" required></select>
+     
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Category</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-8">
+                                      
+        <select class="form-control" ng-model="newRateObject.rateCategory" ng-options="rateCategory for rateCategory in rateCategories" ng-change="checkIfRateExists()" required></select>
+    
+                                
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Position</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-8">
+                               
+        <select class="form-control" name="position" id="position" ng-model="newRateObject.position.positionName" ng-options="position for position in ratePositions" ng-change="checkIfRateExists()" required>
+
+    </select>
+                                    
+        <!--<select class="form-control" ng-model="newRateObject.POSITION_NAME" ng-options="ratePosition as ratePosition.position_name  for ratePosition in ratePositions"></select>-->
+      
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Location</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-8">
+                                      <select class="form-control" name="location" id="location" ng-options="location for location in rateLocations" ng-model="newRateObject.location.city" ng-change="checkIfRateExists()" required>
+    </select>
+                                    
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Domain</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-8">
+                   <select class="form-control" name="location" id="location" ng-model="newRateObject.category.categoryName"ng-change="checkIfRateExists()" ng-change="checkIfRateExists()" required>
+      <option ng-repeat="option in rateCategoryNames" value="{{option}}">{{option}}</option>
+    </select>                 
+                                     <!--<select class="form-control" ng-model="newRateObject.CATEGORY_NAME" ng-options="rateCategoryName as rateCategoryName.category_name for rateCategoryName in rateCategoryNames"></select>-->
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Rate</label>
+                                    <i class="asterisk">*</i>
+
+                                </div>
+                                <div class="col-md-8">
+                                    
+                                    <input type="number" class="form-control" name="rate" ng-model="newRateObject.rate" ng-blur="checkIfRateExists(newRateObject)" required minlength="4">
+                                    <div ng-messages="newRateForm.rate.$error" role="alert" class="inputValidation">
+                                    <div ng-message="required" ng-show="newRateForm.rate.$dirty">This field is mandatory.</div>
+                                    <div ng-message="number">This field must be a valid Number</div>
+                                    <div ng-message="minlength">Rate must have 4 or more digits</div>
+                                    <div ng-show="isRateNotValid==true" ng-show="isRateNotValid==false" >Rate Already Exists for same position, location and category.</div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Rate Status</label>
+                                    <i class="asterisk">*</i>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio"  ng-model="newRateObject.isUsed" value="true" >
+                                    <label>Active</label>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="radio"  ng-model="newRateObject.isUsed" value="false">
+                                    <label>InActive</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-default" ng-click="add()" ng-disabled="newForm.$invalid" style="float: right;  position:relative;"
+        >Save</button>
+    <button type="button" class="btn btn-default" style="float: right; position:relative;" ng-click="cancel()"
+        >Cancel</button>
+                        
+                    </form>
+                </div>
+
+            </div>
+        </div>

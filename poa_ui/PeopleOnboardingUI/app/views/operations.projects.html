@@ -1,0 +1,12 @@
+
+<div class="container-fluid"> 
+        <div class="row ">
+         <!-- <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class=" search form-control" ng-model="search" type="text" placeholder="Search">
+    </div>
+    
+
+ <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection class="gridTable"></div>
+
+ <input class="btn btn-default big-btn" type="button" value="Send PSID to Candidate" ng-click="sendPSIDtoCandidate()" align="center" style="float: left; ">
+</div>

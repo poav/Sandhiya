@@ -1,0 +1,63 @@
+
+        
+<div class="panel panel-default">
+    <div class="panel-heading">New Team </div>
+    <div class="panel-body">
+
+        <form name="newForm" ng-submit="add(newObject)">
+
+            <div class="row"></div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Team Name</label>
+                        <i class="asterisk">*</i>
+                    </div>
+                    <div class="col-md-8">
+             
+                    <input class="form-control" name="teamName" type="input" ng-model="newObject.teamName" ng-blur="checkIfDuplicate()" placeholder="team Name" ng-minlength="2" required>
+
+                    <div ng-messages="newForm.teamName.$error" role="alert" class="inputValidation">
+                        <div ng-message="required" ng-show="newForm.teamName.$dirty">This field is mandatory.</div>
+                        <div ng-message="text">This field must be a valid text</div>
+                        <div ng-message="minlength">Team name must be greater than 2</div>
+                        <div ng-show="isNameNotValid===true && !newForm.teamName.$invalid">Team name already exists</div>
+
+                    </div>
+     
+                    </div>
+                </div>
+            </div>
+
+                        
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Rate Status</label>
+                    <i class="asterisk">*</i>
+                </div>
+                <div class="col-md-4">
+                    <input type="radio"  ng-model="newObject.isActive" value="true" >
+                    <label>Active</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="radio"  ng-model="newObject.isActive" value="false">
+                    <label>InActive</label>
+                </div>
+            </div>
+        </div>
+
+    
+        <button type="submit"  class="btn btn-default" ng-disabled="isNameNotValid===true || newForm.$invalid" style="float: right;  position:relative;"
+             >Save</button>
+        <button type="button" class="btn btn-default" style="float: right; position:relative;" ng-click="cancel()"
+             >Cancel</button>
+
+        
+        </form>
+            
+    </div>
+    <div class="inputValidation" style="text-align: center;  ">{{message}}
+            </div>
+
+</div>

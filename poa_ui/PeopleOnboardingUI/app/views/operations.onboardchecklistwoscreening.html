@@ -1,0 +1,222 @@
+<div ng-cloak>
+    <div>
+        <form name="onboardingWOScreeningForm">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-2" ng-init="user.isNewHire='false'">
+                        <label class="" for="radios">Employee Type</label>
+                    </div>
+                    <div class="col-lg-2">
+                        <label class=" c-input c-radio" for="radios-0">
+                            <input type="radio" ng-model="user.isNewHire" name="employeeType" id="radios-0" value="false" checked="checked">
+                            <span class="c-indicator"></span>Existing Employee
+                        </label>
+                    </div>
+                    <div class="col-lg-2">
+                        <label for="radios-1" class="c-input c-radio">
+                            <input type="radio" ng-model="user.isNewHire" name="employeeType" id="radios-1" value="true">
+                            <span class="c-indicator"></span>New Hire
+                        </label>
+                    </div>
+                </div>
+                <div class="row" ng-if=" user.isNewHire==='false' ">
+                    <div class="col-lg-2">
+                        <label class="" for="Name_OID">Name/Oracle ID</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="text" class="input-xlarge search-query form-control" ng-model="editedObject.supervisorName" uib-typeahead="person.name for person in getPersonNames($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-min-length="3" typeahead-on-select="updatePSD($item, $model, $label, $event,user)">
+                    </div>
+                </div>
+                <div ng-if=" user.isNewHire==='true' ">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label class="" for="Name">Name</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <input id="Name_OID" name="Name" type="text" placeholder="" class="input-xlarge search-query form-control" required="" ng-model="personScreeningDetailsBean.personBean.personName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <label class="" for="Email_newHire">Email</label>
+                        </div>
+                        <div class="col-lg-3">
+                            <input id="Name_OID" name="Email_newHire" type="email" placeholder="" class="input-xlarge search-query form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-init="personScreeningDetailsBean.personBean.isContractor=0">
+                    <div class="col-lg-2">
+                        <label class="" for="isContractor">Is Contractor</label>
+                    </div>
+                    <div class="col-lg-1">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" name="isContractor" id="isContractor-0" value="" ng-model="personScreeningDetailsBean.personBean.isContractor" ng-true-value="1" ng-false-value="0">
+                            <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="employeeName">Name</label>
+                    </div>
+                    <div class="col-lg-3">
+                        {{personScreeningDetailsBean.personBean.personName}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="">Team</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-model="personScreeningDetailsBean.projectBean.teamBean.teamName" ng-change="retriveProject(personScreeningDetailsBean.projectBean.teamBean.teamName)" class="form-control">
+                            <option ng-repeat="team in teamList" ng-value="team.teamName">
+                                {{team.teamName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="" for="projectName">Project</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.teamBean.teamName)" ng-model="personScreeningDetailsBean.projectBean.projectName" class="form-control" ng-change="retriveProjectImpDates(personScreeningDetailsBean.projectBean.projectName)">
+                            <option ng-repeat="projectName in projectList" ng-value="projectName">
+                                {{projectName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label for="">Start Date</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <!-- {{projectStartDate | date:'yyyy-MM-dd'}} to {{projectEndDate | date:'yyyy-MM-dd'}} -->
+                        <input id="" ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.projectName)" ng-model="personStaffingBean.startDate" name="" type="date" placeholder="" class="input-xlarge form-control" required min="{{projectStartDate | date:'yyyy-MM-dd'}}" max="{{projectEndDate | date:'yyyy-MM-dd'}}" onkeydown="return false">
+                    </div>
+                    <div class="col-lg-1">
+                    </div>
+                    <div class="col-lg-2">
+                        <label class="" for="allocation">Allocation</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-append">
+                            <input ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.projectName)" id="allocation" name="allocation" class="input-medium form-control padding-right-40" placeholder="" type="number" min="0" max="100" ng-value="personStaffingBean.allocation">
+                        </div>
+                        <span class="percentSymbol">%</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="hasPreviouslyBeenToStateStreet">Has Previously Been to StateStreet</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" name="hasPreviouslyBeenToStateStreet" id="" value="" ng-model="onboardingCheckListBean.hasPreviouslyWorkedForClient" ng-true-value="1" ng-false-value="0">
+                            <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <label class="" for="hasSapientLaptop">Has Sapient Laptop</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <label class="inline">
+                            <input type="checkbox" name="hasSapientLaptop" id="" value="" ng-model="onboardingCheckListBean.hasSapientLaptop" ng-true-value="1" ng-false-value="0"> <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="location">Location</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-model="personScreeningDetailsBean.personBean.location.city" ng-change="calcRate2(personScreeningDetailsBean.personBean.location.city,personScreeningDetailsBean.personBean.position.positionName,personScreeningDetailsBean.category,rateBean.rateCategory,rateBean.rateType);retriveEmailsDLs(personScreeningDetailsBean.projectBean.projectName,personScreeningDetailsBean.personBean.location.city)" class="form-control">
+                            <option ng-repeat="location in locationList" ng-value="location">
+                                {{location}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <label class="" for="domain">Domain</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-model="personScreeningDetailsBean.category" ng-change="calcRate2(personScreeningDetailsBean.personBean.location.city,personScreeningDetailsBean.personBean.position.positionName,personScreeningDetailsBean.category,rateBean.rateCategory,rateBean.rateType);retrivePositionsByDomain(personScreeningDetailsBean.category)" class="form-control" required="true">
+                            <option ng-repeat="domain in domainList" ng-value="domain">
+                                {{domain}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="position">Position Applied For</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-disabled="isEmpty(personScreeningDetailsBean.category)" ng-model="personScreeningDetailsBean.personBean.position.positionName" ng-change="calcRate2(personScreeningDetailsBean.personBean.location.city,personScreeningDetailsBean.personBean.position.positionName,personScreeningDetailsBean.category,rateBean.rateCategory,rateBean.rateType)" class="form-control" required="true">
+                            <option ng-repeat="position in positionList" ng-value="position.positionName">
+                                {{position.positionName}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <label class="" for="rateType">Rate Type</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select id="rateType" ng-model="rateBean.rateType" name="rateType" class="input-large form-control" ng-change="calcRate2(personScreeningDetailsBean.personBean.location.city,personScreeningDetailsBean.personBean.position.positionName,personScreeningDetailsBean.category,rateBean.rateCategory,rateBean.rateType)">
+                            <option ng-repeat="rateType in rateTypeList" ng-value="rateType.value">{{rateType.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="rateCategory">Rate Category</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <select ng-model="rateBean.rateCategory" ng-change="calcRate2(personScreeningDetailsBean.personBean.location.city,personScreeningDetailsBean.personBean.position.positionName,personScreeningDetailsBean.category,rateBean.rateCategory,rateBean.rateType)" class="form-control">
+                            <option ng-repeat="rateCategory in rateCategoryList" ng-value="rateCategory.value">{{rateCategory.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <label class="" for="rate">Rate</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-prepend">
+                            <span ng-hide="rateBean2===''" style="padding: 10px;">{{ rateBean2.rate | currency }}</span>
+                            <p class="customError animate-show" ng-show="rateBean2===''">Rate not present. Please contact admin.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <label class="" for="comments">Comments</label>
+                    </div>
+                    <div class="col-lg-3">
+                        <textarea id="comments" name="comments" class="form-control" placeholder="Min 25 words" ng-model="personStaffingBean.comments" ng-minlength="25" required="true" ng-class="{invalidInput:onboardingWOScreeningForm.comments.$error.minlength}"></textarea>
+                        <span class="customError" ng-show="onboardingWOScreeningForm.comments.$error.minlength">
+                                Comment should contain atleast 25 Characters</span>
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-2">
+                        <label class="" for="comments">Suggested DLs</label>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <div class="checkbox checkbox-primary" ng-repeat="dl in dLsList">
+                                <input type="checkbox" ng-click="toggleDLsSelection()" ng-true-value="1" ng-false-value="0"> {{dl.email}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{onboardingWOScreeningForm.$invalid}}
+                <!-- use above in button when form is complete.. -->
+                <input type="submit" name="submit" ng-click="submit()" class="btn btn-default md-raised">
+            </div>
+        </form>
+    </div>
+</div>

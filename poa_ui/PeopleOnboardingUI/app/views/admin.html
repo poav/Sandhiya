@@ -1,0 +1,23 @@
+<div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Users" ui-sref="admin.users">
+        <md-content class="md-padding" ui-view="users">
+          
+        </md-content>
+      </md-tab>
+      <md-tab label="Status Change Lo" ui-sref="admin.statusChangeLogs">
+        <md-content class="md-padding" ui-view="statusChangeLogs">
+
+        </md-content>
+      </md-tab>
+      <md-tab label="Interviewees" ui-sref="admin.interviewees">
+        <md-content class="md-padding" ui-view="interviewees" >
+
+        </md-content>
+      </md-tab>
+    </md-tabs>
+  </md-content>
+
+
+</div>

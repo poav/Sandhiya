@@ -1,0 +1,30 @@
+<div class="row">
+  <md-input-container>
+    <label>Quarter</label>
+    <md-select ng-model="selectedQuarter">
+      <md-option ng-repeat="quarter in quarterList" value="{{quarter}}" >
+        {{quarter}}
+      </md-option>
+    </md-select>
+</md-input-container>
+
+<md-input-container>
+    <label>Year</label>
+    <md-select ng-model="selectedYear">
+      <md-option ng-repeat="year in yearsList" value="{{year}}" >
+        {{year}}
+      </md-option>
+    </md-select>
+
+
+</md-input-container>
+
+<input class="btn btn-default" type="button" value="Show" ng-click="show()" align="center" >
+<input class="btn btn-default" type="button" value="Export" ng-click="export()" align="center" >
+
+
+
+</div>
+
+
+<div ui-grid="gridOptions" ui-grid-pagination  ui-grid-selection class="grid"></div>

@@ -1,0 +1,90 @@
+<md-dialog aria-label="Mango (Fruit)" flex>
+  <form >
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Edit Project Info</h2>
+       
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content flex-gt-md>
+      <md-content >
+        <form name="userForm">  
+            <div layout-gt-md="row">
+              <md-input-container class="md-block" flex-gt-sm>
+                <label>
+                  <h4>Name
+                  </h4>
+                </label>
+                <input ng-model="editedObject.personStaffingBean.person.personName" >
+              </md-input-container>
+
+              <md-input-container class="md-block" flex-gt-md>
+                <label>
+                  <h4>Oracle Id
+                  </h4>
+                </label>
+                <input ng-model="editedObject.personStaffingBean.person.personOracleId" >
+              </md-input-container>
+            </div>
+
+            <div layout-gt-md="row">
+              <md-input-container class="md-block" flex-gt-sm flex=25>
+                <label>
+                  <h4>PID
+                  </h4>
+                </label>
+                <input ng-model="editedObject.personStaffingBean.project.projectId" >
+              </md-input-container>
+
+              <md-input-container class="md-block" flex-gt-md flex=50>
+                <label>
+                  <h4>Sapient Project Name
+                  </h4>
+                </label>
+                <input ng-model="editedObject.personStaffingBean.project.projectName" >
+              </md-input-container>
+
+              <md-input-container class="md-block" flex-gt-md flex=25>
+                <label>
+                  <h4>Client Project Id
+                  </h4>
+                </label>
+                <input ng-model="editedObject.personStaffingBean.project.clientProjectId" >
+              </md-input-container>
+
+            </div>
+
+          <div layout-gt-md="row" >
+              <md-input-container class="md-block" flex="70">
+              <label>
+                  <h4>Person Client ID
+                  </h4>
+              </label>
+              <input ng-model="editedObject.personStaffingBean.person.personClientId">
+              </md-input-container>
+
+              <md-datepicker ng-model="editedObject.dateOnboardingInitiatedDate"  flex="30" md-placeholder="Onboarding Initiation Date">
+              </md-datepicker>
+               
+            </div>
+              
+        </form>
+      </md-content>   
+    </md-dialog-content>
+
+    <md-dialog-actions >
+      <md-button ng-click="cancel()" style="margin-right:20px;" >
+        Cancel
+      </md-button>
+      <md-button ng-click="update()" style="margin-right:20px;" >
+        Save
+      </md-button>
+            
+    </md-dialog-actions>
+
+  </form>
+</md-dialog>

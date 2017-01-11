@@ -1,0 +1,62 @@
+<md-dialog flex="50">
+  <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Document Resubmission</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content flex-gt-md>
+          <md-content class="md-padding">
+
+      <div layout="row" layout-wrap>
+        <div flex="100" layout="column">
+
+          <div>
+        
+          <fieldset class="demo-fieldset" >
+          <!-- <legend class="demo-legend">Using &lt;md-checkbox&gt; with the 'indeterminate' attribute </legend> -->
+          <div layout="row" layout-wrap flex>
+          <label>
+              <h4>Details
+              </h4>
+            </label>
+          <div class="demo-select-all-checkboxes" flex="100" ng-repeat="detail in details">
+              <md-checkbox ng-checked="selected[$index]" ng-click="toggle($index)">
+               {{ detail }}
+              </md-checkbox>
+          </div>
+          </div>
+          </fieldset>
+          </div>
+      </div>
+    
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-md>
+            <label>
+              <h4>Additional Comments
+              </h4>
+            </label>
+            <input ng-model="comments" >
+          </md-input-container>
+        </div>
+
+</div>
+    </md-content>    
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <span flex></span>
+      
+      <md-button ng-click="save()" style="margin-right:20px;" >
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
+

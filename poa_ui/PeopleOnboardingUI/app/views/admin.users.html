@@ -1,0 +1,62 @@
+
+
+<div class="row" >
+      <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+   		
+        <input class="search form-control" ng-model="search" type="text" placeholder="Search" >
+    
+</div>
+
+
+<div>	
+	<div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-selection ui-grid-pagination  ></div>
+</div>
+
+<div ng-show="userRolesModifyCheck==true" class="panel panel-info">
+	<div layout="row" >
+		<div ng-repeat="role in roleNames" class="panel-body" flex=20>
+			<md-checkbox class= "green" ng-checked="selected[$index]" ng-click="toggle($index)">
+	               {{ role }}
+	        </md-checkbox>
+		</div>
+
+	</div>
+
+	<div layout="column"  >
+		<div layout-align="end">
+			<button class="btn md-raised" type="button" ng-click="modify()" style="float: right; ">Modify Role</button>
+		</div>
+	</div>
+
+</div >
+
+<div class="input-container">
+
+<button class="btn md-raised" type="button" ng-click="modify()">Modify</button>
+<button class="btn md-raised" type="button" ng-click="delete()">Delete</button>
+<button class="btn md-raised" type="button" ng-click="deActivate()">DeActivate</button>
+
+
+</div>	
+
+<div class="panel panel-default">
+
+	<div ng-show="errorMessageCheck==true" class="errorMsgNotification">
+		<h4>{{errorMessage}}</h4>
+	</div>
+
+	<div ng-show="successMessageCheck==true" class="successMessageNotification">
+		<h4>{{successMessage}}</h4>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+

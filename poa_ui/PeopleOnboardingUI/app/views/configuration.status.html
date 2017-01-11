@@ -1,0 +1,27 @@
+ 
+<div class="container-fluid">
+
+<div class="row" >
+      <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class=" search form-control" ng-model="search" type="text" placeholder="Search" >
+    </div>
+ 
+<!-- <div>
+	<h1 class="md-display-3">Status</h1>
+</div> -->
+
+<div>	
+	<div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-pagination class="grid"></div>
+</div>
+</div>
+
+<div class="input-container">
+<!-- <md-button ng-click="add()" class="btn md-raised" style="float:left;">New Status</md-button>
+ -->
+
+ <input class="btn btn-default " type="button" value="New Status" ng-click="add()" align="center" style="float: left; "> 
+
+</div>	
+
+
+

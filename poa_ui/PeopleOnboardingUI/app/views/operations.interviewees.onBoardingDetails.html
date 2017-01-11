@@ -1,0 +1,217 @@
+<!-- <div class="container-fluid"> -->
+
+<div>
+    <div class="panel-heading"></div>
+</div> 
+
+<div class="panel panel-default">
+    <div class="panel-heading">Onboarding Details</div>
+    <div class="panel-body">
+            
+    <form name="rateEditForm" >
+        <div class="row"></div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Candidate Name</label>
+                        </div>
+                        <div class="col-md-8">
+
+                             <input ng-model="editedObject.personBean.personDetails.name" class="form-control" disabled="true">
+
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Domain</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input ng-model="editedObject.category" class="form-control" disabled="true">
+
+
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Sapient Project Name</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="personStaffingBean.project"  ng-options="project as project.projectName for project in projectNames" ng-change="getDls()"
+
+                            required>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="col-md-4">  
+                            <label>Has person previously been
+                            assigned at StateStreet?*:</label>
+                        </div>
+                        <div class="col-md-8">                           
+                             <select class="form-control" ng-options="option for option in options" ng-model="onBoardingCheckListBean.hasPreviouslyWorkedForClient" ng-change="formatOptionData()" required>
+                           </select>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+           <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Rate Type</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-model="personStaffingBean.rateBean.rateType" ng-options="rateType for rateType in rateTypes" ng-change="getRate()" required></select>
+
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Rate Category</label>
+                        </div>
+                        <div class="col-md-8">
+                           <select class="form-control" ng-model="personStaffingBean.rateBean.rateCategory" ng-options="rateCategory for rateCategory in rateCategories" ng-change="getRate()" required></select>
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Location</label>
+                        </div>
+                        <div class="col-md-8">
+                           <select class="form-control" name="location" ng-model="personStaffingBean.location" ng-options="location as location.city for location in rateLocations"  ng-change="getRate() " required>
+                           </select>
+
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Rate</label>
+                        </div>
+                        <div class="col-md-8">
+                        <input type="number" class="form-control" name="rate" ng-model="personStaffingBean.rateBean.rate" ng-blur="checkIfRateExists(newRateObject)" required minlength="4">
+
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Sapient Laptop?</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-options="option for option in options" ng-model="onBoardingCheckListBean.hasSapientLaptop" required ng-change="formatOptionData()">
+                           </select>
+
+                    </div>
+                    </div>
+
+                     <div class="col-md-6">
+                        <div class="col-md-4">
+                            <label>Onsite at StateStreet</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" ng-options="option for option in options" ng-model="onBoardingCheckListBean.isOnsite" required ng-change="formatOptionData()">
+                           </select>
+
+                    </div>
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label>StateStreet Start Date</label>
+                    </div>
+                    <div class="col-md-8">
+                    <input type="date" ng-model="personStaffingBean.staffingStartDate"  required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-md-4">
+                        <label>Allocation</label>
+                    </div>
+                    <div class="col-md-8">
+                        <input class="form-control " type="number" ng-model="personStaffingBean.allocation" required >
+                        </input>
+
+                    </div>
+                </div>
+               
+            </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                   
+                        <div class="col-md-2">
+                            <label>Dl to be added</label>
+                        </div>
+                        <div class="col-md-10" >
+                            <div ng-repeat="dl in dls">
+                            <input type="checkbox" ng-checked="selected[$index]" ng-click="toggle($index)" > 
+                            </input>
+                            {{dl.email}}
+                            </div>
+
+                    </div>
+                
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                   
+                        <div class="col-md-4">
+                            <label>Comments</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control" type="textarea" ng-model="personStaffingBean.comments">
+                            </input>
+
+                    </div>
+                
+                </div>
+            </div>
+</div>
+                    </div>
+                    <button type="submit" ng-click="initiateOnboarding()" class="btn btn-default" style="float: right; position: relative;"
+                         ng-disabled="ratEditForm.$invalid">Save</button>
+                    
+                    <button type="submit" ng-click="cancel()" class="btn btn-default" style="float: right; position: relative;"
+                         >Cancel</button>
+                </form>
+            </div>
+
+        </div>
+</div>

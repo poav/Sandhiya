@@ -1,0 +1,63 @@
+<md-dialog flex="40">
+  <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Onboarding Person Details</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content flex-gt-md>
+
+    <div>
+      <form name="userForm">
+ 		
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-xs>
+            <label>
+              <h4>Name
+              </h4>
+            </label>
+            <input ng-model="editedObject.tempPersonName" >
+          	</md-input-container>
+  
+        </div>
+
+        <div layout-gt-md="row">
+
+        <md-input-container class="md-block" flex-gt-xs>
+            <label>
+              <h4>Personal Email Id
+              </h4>
+            </label>
+            <input ng-model="editedObject.tempPersonEmail" >
+            </md-input-container>
+          	
+        </div>
+
+        <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-xs>
+            <label>
+              <h4>Oracle Id
+              </h4>
+            </label>
+            <input type="number" ng-model="tempPersonOracleID" >
+            </md-input-container>
+        </div>
+ 
+      </form>
+    </div>
+     
+    </md-dialog-content>
+    <md-dialog-actions layout="row">  
+      <span flex></span>
+      <md-button ng-click="update()" style="margin-right:20px;" >
+        save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+

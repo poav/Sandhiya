@@ -1,0 +1,245 @@
+<md-dialog aria-label="Mango (Fruit)" flex>
+  <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Screening Details</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content flex-gt-md>
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Update Screening Details">
+          <md-content class="md-padding">
+            <h1 class="md-display-2"></h1>
+
+            <div>
+      <form name="userForm">
+           
+          <div layout="row" >
+            
+            
+            <label flex=15> <h4>Employee Type: </h4></label>
+
+            <md-radio-group  ng-model="editedObj.personBean.isTemp" flex=20 ng-disabled="true">
+            <md-radio-button ng-value="editedObj.personBean.isTemp"  >Sapient Employee</md-radio-button>
+            <md-radio-button ng-value="!editedObj.personBean.isTemp"> New Hire </md-radio-button>
+            </md-radio-group>
+
+            <div flex=35>
+          
+              <!-- <md-checkbox ng-model="editedObject.personBean.isContractor" aria-label="Is Contractor">
+                Is Contractor
+              </md-checkbox> -->
+
+
+              <md-switch ng-model="editedObject.personBean.isContractor" aria-label="Switch 1">
+              {{!editedObject.personBean.isContractor ? 'Permanent' :'Contractor' }}
+              </md-switch>
+
+          </div>
+
+           <md-input-container class="md-block" flex-gt-md flex=30>
+            <label>
+              <h4>Interviewer Name
+              </h4>
+            </label>
+            <input ng-model="editedObject.personBean.personDetails.name" >
+          </md-input-container>
+            
+          </div>     
+        <br>
+
+        <div layout-gt-md="row">
+          <md-input-container class="md-block" flex-gt-sm flex=30>
+            <label>
+              <h4>Interviewee Name
+              </h4>
+            </label>
+            <input ng-model="editedObject.personBean.personDetails.name" >
+          </md-input-container>
+
+         <md-input-container class="md-block" flex-gt-sm flex=25>
+            <label>
+              <h4>Team Name
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.projectBean.teamBean.teamName" ng-change="getProjectList(editedObject.projectBean.teamBean.teamName)">
+              <md-option ng-repeat="team in teamList" value="{{team}}" >
+                {{team}}
+              </md-option>
+            </md-select>
+           
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm flex>
+            <label>
+              <h4>Project Name
+              </h4>
+            </label>
+
+            <md-select ng-model="editedObject.projectBean.projectName" ng-disabled="activateProjectName==false">
+              <md-option ng-repeat="project in projectNames" value="{{project.projectName}}" >
+                {{project.projectName}}
+              </md-option>
+            </md-select>
+<!-- <select class="form-control" ng-model="newObject.projectBean"  ng-options="project as project.projectName for project in projectNames" 
+        required>
+          
+        </select> -->
+          </md-input-container>
+
+          
+        </div>
+       
+        <br>
+         <div layout-gt-sm="row">
+         <md-input-container class="md-block" flex-gt-md flex=35>
+            <label>
+              <h3>Position Applied For
+              </h3>
+            </label>
+            <input ng-model="editedObject.personBean.position.positionName" >
+          </md-input-container>
+
+          <div flex-gt-sm flex=30>
+          <md-datepicker ng-model="editedObject.screeningStartDate"  md-placeholder="End date">
+          </md-datepicker>   
+          </div>
+          <div flex-gt-sm flex=35>
+          <md-datepicker ng-model="editedObject.screeningEndDate"  md-placeholder="End date">
+          </md-datepicker>
+          </div>
+          
+        </div>
+        <br>
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Location
+              </h4>
+            </label>
+            
+            <md-select ng-model="editedObject.personBean.location.city">
+              <md-option ng-repeat="location in locationList" value="{{location}}" >
+                {{location}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+          
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Domain
+              </h4>
+            </label>
+           <md-select ng-model="editedObject.personBean.position.domain">
+              <md-option ng-repeat="domain in domainList" value="{{domain}}" >
+                {{domain}}
+              </md-option>
+            </md-select>
+           
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Status
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.statusBean.statusName">
+              <md-option ng-repeat="status in statusList" value="{{status}}">
+                {{status}}
+              </md-option>
+            </md-select>
+          
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-md flex=25>
+            <label>
+              <h4>Result
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.statusBean.resultName">
+              <md-option ng-repeat="result in resultList" value="{{result}}" >
+                {{result}}
+              </md-option>
+            </md-select>
+            
+          </md-input-container>
+
+          
+        </div>
+
+
+<br>
+    
+
+        <br>
+
+        <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex-gt-md>
+            <label>
+              <h4>Feedback
+              </h4>
+            </label>
+            <input type="textarea" ng-model="editedObject.feedback" >
+          </md-input-container>
+        </div>
+
+        <br>
+
+      </form>
+    </div>
+          </md-content>
+        </md-tab>
+        <md-tab label="Scores">
+          <md-content class="md-padding">
+            
+            <!-- <div layout="column">
+
+            <div layout-gt-xs="row">
+          <md-input-container class="md-block" flex="40%>">
+            <label>
+              <h4>Topic
+              </h4>
+            </label>
+            
+          </md-input-container>
+
+          <md-input-container class="md-block" flex="20%">
+            <label>
+              <h4>Score
+              </h4>
+            </label>
+            <input ng-model="editedObject.comments" >
+          </md-input-container>
+
+          <md-input-container class="md-block" flex="40%">
+            <label>
+              <h4>Comments
+              </h4>
+            </label>
+            <input ng-model="editedObject.comments" >
+          </md-input-container>
+
+        </div>
+
+            </div> -->
+
+            <div ui-grid="scoreGridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pagination class="grid"></div>
+          </md-content>
+        </md-tab>
+        
+      </md-tabs>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      
+      <span flex></span>
+      
+      <md-button ng-click="update()" style="margin-right:20px;" >
+        Save
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

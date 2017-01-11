@@ -1,0 +1,29 @@
+<div class="container-fluid">
+<div class="row" ng-controller="toastController">
+      <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class=" search form-control" ng-model="search" type="text" placeholder="Search" ng-click="yetToImplementToast()">
+    </div>
+<div ui-grid="gridOptions"  ui-grid-pagination ui-grid-selection class="grid"></div>
+<div layout="row">
+
+
+<md-button ng-click="getAsEmail()" class="md-raised" style="margin-right:20px;" >
+        Get as Email
+</md-button>
+<md-button ng-click="notifyStaffing()" style="margin-right:20px;" >
+        Notify Staffing
+</md-button>
+
+<md-button class="btn" ng-click="initiateOnboarding()" ng-show="isOperationMenu">
+        Initiate Onboarding
+</md-button>
+
+</div>
+<div ng-show="initiateOnBoardingErrorMsgValidator==true">
+<h4 >
+
+{{initiateOnBoardingErrorMsg}}
+</h4>
+</div>
+
+ 

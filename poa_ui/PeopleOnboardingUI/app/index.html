@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>POB</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+</head>
+
+<body ng-app="poepleOnboardingAppUiApp" layout="column" ng-cloak>
+    <!-- Container #1 -->
+    <md-toolbar class="header">
+        <div>
+            <img ng-src="images/logo2.png" style="width: 90px;">
+        </div>
+        <div>
+            <h2 class="people-onboarding">People Onboarding</h2>
+        </div>
+        <div>
+            <img ng-src="images/VendorsLogo.png">
+        </div>
+        <div flex layout="column">
+            <div class="logout" ng-controller="toastController">
+                <h4 ng-click="showLogoutToast()">Logout</h4>
+            </div>
+            <div class="line">
+                <img ng-src="images/line.png">
+            </div>
+            <div class="user">
+                <h4>Welcome, Agam</h4>
+            </div>
+            <div class="setting-icon" ng-init="imgsrc='images/settingsIcon.png'" ng-mouseover="imgsrc='images/settingsIcon_hover.png'" ng-mouseout="imgsrc='images/settingsIcon.png'" ng-controller="toastController">
+                <img ng-click="settingToast()" ng-src="{{imgsrc}}">
+            </div>
+        </div>
+    </md-toolbar>
+    <!-- <a class="ripplelink cyan" href="#">Hover & Click me!</a> -->
+    <!-- Container #2 -->
+    <div layout="row" class=" md-whiteframe-8dp sub-header"></div>
+    <!-- Container #3 -->
+    <div layout="row" class="roles-header" ng-controller="roleController as rCont">
+        <!-- Container #3.1 -->
+        <div flex layout="row" >
+            <div md-whiteframe="3" class="ripplelink " ui-sref="interviewer.screeningDetails" ng-click="rCont.selectTab(1)" ng-class="{active:rCont.isSelected(1)}">
+                <span>Interviewer</span>
+            </div>
+            <div md-whiteframe="3" class="ripplelink " ui-sref="operations.projects" ng-click="rCont.selectTab(2)" ng-class="{active:rCont.isSelected(2)}">
+                <span>Operations</span>
+            </div>
+            <div md-whiteframe="3" class="ripplelink " ui-sref="admin.users" ng-click="rCont.selectTab(3)" ng-class="{active:rCont.isSelected(3)}">
+                <span>Admin</span>
+            </div>
+            <div md-whiteframe="3" class="ripplelink " ui-sref="developer.issueTracker" ng-click="rCont.selectTab(4)" ng-class="{active:rCont.isSelected(4)}">
+                <span>Developer</span>
+            </div>
+        </div>
+        <!-- Container#3.2 -->
+        <div flex layout="row">
+            <!--  //Config n dashboard icons -->
+            <div class="dashboard" ui-sref="dashboards.quaterly" ng-click="rCont.selectTab(5)" ng-class="{d:rCont.isSelected(5)}">
+                <span>Dashboard</span>
+            </div>
+            <div class="config" ui-sref="configuration.team" ng-click="rCont.selectTab(6)" ng-class="{c:rCont.isSelected(6)}">
+                <span>Configuration</span>
+            </div>
+        </div>
+    </div>
+    <!-- Container #5 -->
+    <md-content flex class="md-whiteframe-5dp" id="content">
+        <div ui-view=""></div>
+    </md-content>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/loginValidation.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/admin.js"></script>
+    <script src="scripts/controllers/operations.js"></script>
+    <script src="scripts/controllers/developer.js"></script>
+    <script src="scripts/controllers/interviewer.js"></script>
+    <script src="scripts/controllers/dashboards.js"></script>
+    <script src="scripts/controllers/configuration.js"></script>
+    <script src="scripts/controllers/admin.users.js"></script>
+    <script src="scripts/controllers/admin.statuschangelogs.js"></script>
+    <script src="scripts/controllers/admin.interviewees.js"></script>
+    <script src="scripts/controllers/developer.issuetracker.js"></script>
+    <script src="scripts/controllers/dashboards.projects.js"></script>
+    <script src="scripts/controllers/dashboards.annual.js"></script>
+    <script src="scripts/controllers/dashboards.quaterly.js"></script>
+    <script src="scripts/controllers/operations.issuetracker.js"></script>
+    <script src="scripts/controllers/operations.onboardchecklistwoscreening.js"></script>
+    <script src="scripts/controllers/operations.onboardchecklist.js"></script>
+    <script src="scripts/controllers/operations.interviewees.js"></script>
+    <script src="scripts/controllers/operations.people.js"></script>
+    <script src="scripts/controllers/operations.projects.js"></script>
+    <script src="scripts/controllers/configuration.rate.js"></script>
+    <script src="scripts/controllers/configuration.team.js"></script>
+    <script src="scripts/controllers/configuration.project.js"></script>
+    <script src="scripts/controllers/configuration.domain.js"></script>
+    <script src="scripts/controllers/configuration.location.js"></script>
+    <script src="scripts/controllers/configuration.status.js"></script>
+    <script src="scripts/controllers/configuration.title.js"></script>
+    <script src="scripts/controllers/configuration.emails.js"></script>
+    <script src="scripts/controllers/configuration.dls.js"></script>
+    <script src="scripts/controllers/configuration.dbdesign.js"></script>
+    <script src="scripts/controllers/configuration.backupdb.js"></script>
+    <script src="scripts/controllers/configuration.restoredb.js"></script>
+    <script src="scripts/controllers/interviewer.screeningdetails.js"></script>
+    <script src="scripts/controllers/interviewer.viewinterviewees.js"></script>
+    <script src="scripts/controllers/interviewer.reportissue.js"></script>
+    <script src="scripts/controllers/operations.updateoid.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

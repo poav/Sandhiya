@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <div class="row" ng-controller="toastController">
+        <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class=" search form-control" ng-model="search" type="text" placeholder="Search" ng-click="yetToImplementToast()">
+    </div>
+
+    <div>
+        <div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-pagination class="grid"></div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="container-fluid">
+    <div class="row">
+        <input type="text" class=" search form-control" placeholder="Search" ng-model="search" style="float:right;">
+    </div>
+    <div ui-grid="gridOptions" ui-grid-edit ui-grid-row-edit ui-grid-cellNav ui-grid-pagination class="gridTable"></div>
+    <input class="btn btn-default" type="button" value="Report Issue" ng-click="add($event)" align="center" style="float: center; ">
+</div>

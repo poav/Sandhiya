@@ -1,0 +1,74 @@
+<md-dialog ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1>{{action}} New Project</h1>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+        <div layout="column">
+            <form name="projectEditForm">
+                <md-content layout-padding flex="row" class="md-whiteframe-1dp">
+                    <md-input-container>
+                        <label>PID</label>
+
+                        <input ng-model="user.projectId" required>
+                    </md-input-container class="md-block">
+                    <md-input-container>
+                        <label>Team Name</label> 
+                        
+                        <md-select ng-model="user.teamBean" >
+                            <md-option ng-repeat="team in teamList" ng-value="team">
+                                {{team}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Sapient Project Name</label>
+                        <input ng-model="user.projectName">
+                    </md-input-container>
+                </md-content>
+                <md-content flex="row" class="md-whiteframe-1dp">
+                    <md-input-container>
+                        <label>Client Project ID</label>
+                        <input ng-model="user.clientProjectId">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Client Time Tracking Project ID</label>
+                        <input ng-model="user.clientTimeTrackingId">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Client Project Name</label>
+                        <input ng-model="user.clientProjectName">
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Client Time Tracking Project Name</label>
+                        <input ng-model="user.clientTimeTrackingProjectName">
+                    </md-input-container>
+                </md-content>
+                <md-content flex="row" class="md-whiteframe-1dp">
+                    <md-input-container class="switch">
+                        {{user.isActive ? "Active" : "In Active"}}
+                        <md-switch ng-model="user.isActive"></md-switch>
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Start Date</label>
+                        <input type="date" ng-model="user.projectStartDate" value="user.projectStartDate">
+                    </md-input-container>
+                    <md-input-container>
+                        <label>End Date</label>
+                        <input type="date" ng-model="user.projectEndDate" value="user.projectEndDate">
+                    </md-input-container>
+                    </md-content>
+                    <md-content>
+                        <md-button class="md-raised md-primary pob-button" type="submit" ng-click="edit(user)">Submit</md-button>
+                    </md-content>
+            </form>
+            </md-content>
+        </div>
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,56 @@
+
+<div class="panel panel-default">
+    <div class="panel-heading">New Status </div>
+    <div class="panel-body">
+
+    <form name="newForm" ng-submit="add(newObject)">
+
+      
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Status Name</label>
+                    <i class="asterisk">*</i>
+                </div>
+                <div class="col-md-8">
+
+                     
+<input class="form-control" name="phase" type="input" ng-model="newObject.statusName" placeholder="status name" required ng-minlength="5">
+<div ng-messages="newForm.phase.$error" role="alert" class="inputValidation">
+        <div ng-message="required" ng-show="newForm.phase.$dirty">This field is mandatory.</div>
+        <div ng-message="email">This field must be a valid email Address</div>
+        <div ng-message="minlength">Phase name must be greater than 5</div>
+</div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Result Name</label>
+                    <i class="asterisk">*</i>
+                </div>
+                <div class="col-md-8">
+
+                     
+<input class="form-control" name="status" type="input" ng-model="newObject.resultName" placeholder="result name" ng-blur="checkIfDuplicateStatus()" required ng-minlength="5">
+<div ng-messages="newForm.status.$error" role="alert" class="inputValidation">
+        <div ng-message="required" ng-show="newForm.status.$dirty">This field is mandatory.</div>
+        <div ng-message="email">This field must be a valid email Address</div>
+        <div ng-message="minlength">Status name must be greater than 5</div>
+        <div ng-show="(isNameNotValid==true)" && !newForm.status.$invalid" >Status name already exists</div>
+</div>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-disabled="newForm.$invalid" style="float: right;  position:relative;"
+             >Save</button>
+        <button type="button" class="btn btn-default" style="float: right; position:relative;" ng-click="cancel()"
+             >Cancel</button>
+    </form>
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+
+<div class="panel panel-default">
+        <div class="panel-heading">Add New Title </div>
+        <div class="panel-body">
+            <form name="newForm" ng-submit="add(newObject)">
+                <div class="row"></div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Position Name</label>
+                            <i class="asterisk">*</i>
+                        </div>
+                       <div class="col-md-8">
+
+<select class="form-control" ng-model="newObject.careerStage" ng-options="designationName for designationName in designationList" required>
+    
+</select>
+
+
+                        </div>
+                    </div>
+                    </div>
+      
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Level</label>
+                    <i class="asterisk">*</i>
+                </div>
+                <div class="col-md-8">
+
+<select class="form-control" ng-model="newObject.level" ng-options="designationLevel for designationLevel in designationLevelList" required>
+
+</select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Domain</label>
+                    <i class="asterisk">*</i>
+                </div>
+                <div class="col-md-8">
+<select class="form-control" ng-model="newObject.domain" ng-options="domain for domain in domainList" required>
+
+</select>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>isActive</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="radio"  ng-model="newObject.isUsed" value="1" >
+                    <label>Active</label>
+                </div>
+                <div class="col-md-4">
+                    <input type="radio"  ng-model="newObject.isUsed" value="0">
+                    <label>InActive</label>
+
+                </div>
+            </div>
+        </div>
+
+
+    <button class="btn btn-default" ng-click="add()" ng-disabled="newForm.$invalid" style="float: right;  position:relative;"
+        >Save</button>
+    <button type="button" class="btn btn-default" style="float: right; position:relative;" ng-click="cancel()"
+        >Cancel</button>
+    </form>
+    </div>
+</div>

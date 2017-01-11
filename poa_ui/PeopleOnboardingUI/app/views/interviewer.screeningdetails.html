@@ -1,0 +1,263 @@
+<div ng-cloak>
+    <form name="screeningForm">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-4 label2" ng-init="user.isNewHire='false'">
+                        <label class="" for="radios">Employee Type</label>
+                    </div>
+                    <div class="col-lg-4 label2">
+                        <label class="c-input c-radio" for="radios-0">
+                            <input type="radio" ng-model="user.isNewHire" name="employeeType" id="radios-0" value="false" checked="checked"><span class="c-indicator"></span> Existing Employee
+                        </label>
+                    </div>
+                    <div class="col-lg-3">
+                        <label for="radios-1" class="lgall-font  c-input c-radio">
+                            <input type="radio" ng-model="user.isNewHire" name="employeeType" id="radios-1" value="true"><span class="c-indicator"></span> New Hire
+                        </label>
+                    </div>
+                </div>
+                <!-- Old Employee -->
+                <div class="row" ng-if=" user.isNewHire==='false' ">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="Name_OID">Name/Oracle ID</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input type="text" class="input-xlarge search-query form-control" ng-model="editedObject.supervisorName" uib-typeahead="person.name for person in getPersonNames($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" typeahead-min-length="3" typeahead-on-select="updatePSD($item, $model, $label, $event,user)" ng-required="required">
+                    </div>
+                </div>
+                <!-- New Hire  -->
+                <div ng-if=" user.isNewHire ==='true' ">
+                    <div class="row">
+                        <div class="col-lg-4 label2">
+                            <label class="" for="Name">Interviewee Name</label>
+                        </div>
+                        <div class="col-lg-5">
+                            <input id="Name_OID" name="Name" type="text" placeholder="" class="input-xlarge search-query form-control" required="" ng-model="personScreeningDetailsBean.personBean.tempPersonBean.tempPersonName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 label2">
+                            <label class="" for="Name_OID">Email</label>
+                        </div>
+                        <div class="col-lg-5 label2">
+                            <input id="Name_OID" name="Name_OID" type="email" placeholder="" class="input-xlarge search-query form-control" required ng-model="personScreeningDetailsBean.personBean.tempPersonBean.tempPersonEmail">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="Name">Interviewer Name</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input disabled="true" id="Name_OID" name="Name" type="text" placeholder="Agam Jain" class="input-xlarge search-query form-control" required="" ng-model="session.Name">
+                    </div>
+                </div>
+                <div class="row" ng-init="personScreeningDetailsBean.personBean.isContractor=false">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="isContractor">Is Contractor</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <label class="c-input c-checkbox ">
+                            <input type="checkbox" name="isContractor" ng-model="personScreeningDetailsBean.personBean.isContractor" ng-true-value="1" ng-false-value="0">
+                            <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="employeeName">Name</label>
+                    </div>
+                    <div class="col-lg-5">
+                        {{personScreeningDetailsBean.personBean.personName}}
+                        <!--  <input id="employeeName" name="employeeName" type="text" placeholder="" ng-model="personScreeningDetailsBean.personBean.personName" class="input-xlarge form-control" required> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="">Team</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-model="personScreeningDetailsBean.projectBean.teamBean.teamName" ng-change="retriveProject(personScreeningDetailsBean.projectBean.teamBean.teamName)" class="form-control">
+                            <option ng-repeat="team in teamList" ng-value="team.teamName">
+                                {{team.teamName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="projectName">Project</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.teamBean.teamName)" ng-model="personScreeningDetailsBean.projectBean.projectName" class="form-control" ng-change="retriveProjectImpDates(personScreeningDetailsBean.projectBean.projectName)">
+                            <option ng-repeat="projectName in projectList" ng-value="projectName">
+                                {{projectName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="hasPreviouslyBeenToStateStreet">Has Previously Been to StateStreet</label>
+                    </div>
+                    <div class="col-lg-5" ng-init="onboardingCheckListBean.hasPreviouslyBeenToStateStreet='false'">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" name="hasPreviouslyBeenToStateStreet" ng-model="onboardingCheckListBean.hasPreviouslyWorkedForClient" ng-true-value="1" ng-false-value="0">
+                            <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2" ng-init="onboardingCheckListBean.hasSapientLaptop='false'">
+                        <label class="" for="hasSapientLaptop">Has Sapient Laptop</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <label class="c-input c-checkbox">
+                            <input type="checkbox" name="hasSapientLaptop" id="" value="" ng-model="onboardingCheckListBean.hasSapientLaptop" ng-true-value="1" ng-false-value="0">
+                            <span class="c-indicator"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="">Start Date
+                            <!--  {{projectStartDate | date:'yyyy-MM-dd'}} to {{projectEndDate | date:'yyyy-MM-dd'}} -->
+                        </label>
+                    </div>
+                    <div class="col-lg-5">
+                        <input id="" ng-model="personScreeningDetailsBean.stringScreeningStartDate" name="" type="date" placeholder="" class="input-xlarge form-control" min="{{projectStartDate | date:'yyyy-MM-dd'}}" max="{{projectEndDate | date:'yyyy-MM-dd'}}" ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.projectName)" onkeydown="return false">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="">End Date</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <!-- {{projectStartDate | date:'yyyy-MM-dd'}} to {{projectEndDate | date:'yyyy-MM-dd'}} -->
+                        <input id="" ng-disabled="isEmpty(personScreeningDetailsBean.projectBean.projectName)" ng-model="personScreeningDetailsBean.stringScreeningEndDate" name="" type="date" placeholder="" class="input-xlarge form-control" required min="{{projectStartDate | date:'yyyy-MM-dd'}}" max="{{projectEndDate | date:'yyyy-MM-dd'}}" onkeydown="return false">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="location">Location</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-model="personScreeningDetailsBean.personBean.location.city" class="form-control">
+                            <option ng-repeat="location in locationList" ng-value="location">
+                                {{location}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="domain">Domain</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-model="personScreeningDetailsBean.category" class="form-control" ng-change="getCriteriaList(personScreeningDetailsBean.category);retrivePositionsByDomain(personScreeningDetailsBean.category)">
+                            <option ng-repeat="domain in domainList" ng-value="domain">
+                                {{domain}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <div layout="row" layout-wrap flex ng-if="!isEmpty(personScreeningDetailsBean.category)">
+                        <div class="col-lg-4">
+                            <label class="" for="domain">Criteria</label>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="checkbox checkbox-primary" ng-repeat="criteria in criteriaList">
+                                <div class="col-lg-5">
+                                    <input type="checkbox" ng-click="toggleCriteriaSelection(criteria.criteriaName,criteria.criteriaId)"> {{criteria.criteriaName}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="position">Position Applied For</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-disabled="isEmpty(personScreeningDetailsBean.category)" ng-model="personScreeningDetailsBean.personBean.position.positionName" class="form-control">
+                            <option ng-repeat="position in positionList" ng-value="position.positionName">
+                                {{position.positionName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="status">Status</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ng-model="personScreeningDetailsBean.statusBean.statusName" class="form-control" ng-required="required">
+                            <option ng-value="New">
+                                New
+                            </option>
+                            <!-- <option ng-value="'Screening complete'">
+                                Screening Complete
+                            </option>
+                            <option ng-value="'Screening in progress '">
+                                Screening in progress
+                            </option> -->
+                        </select>
+                    </div>
+                </div>
+                <!--  <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="rate">Result</label>
+                    </div>
+                    <div class="col-lg-5" ng-init="personScreeningDetailsBean.statusBean.resultName='NA'">
+                        <div class="input-prepend">
+                            <input id="rate" name="" class="input-lgall form-control padding-left-40" type="text" ng-disabled="true">
+                        </div>
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col-lg-4 label2">
+                        <label class="" for="comments">Comments</label>
+                    </div>
+                    <div class="col-lg-5">
+                        <textarea id="comments" name="comments" class="form-control" placeholder="Min 25 words" ng-model="personScreeningDetailsBean.feedback" ng-minlength="25" required ng-class="{validInput:screeningForm.comments.$error.minlength}"></textarea>
+                         <span class="customError" ng-show="screeningForm.comments.$error.minlength">Comment should contain atleast 25 Characters</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="col-lg-12 md-whiteframe-2dp" ng-repeat="topic in fulltopicBean" id={{topic[0].criteriaBean.criteriaName}}>
+                    <h3 align="center">{{topic[0].criteriaBean.criteriaName}}</h3>
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <h4>NA</h4></div>
+                        <div class="col-lg-4">
+                            <h4>Topic Name</h4></div>
+                        <div class="col-lg-2">
+                            <h4>Score</h4></div>
+                        <div class="col-lg-5">
+                            <h4>Comments</h4></div>
+                    </div>
+                    <div ng-repeat="t in topic">
+                        <div class="row" ng-init="score[$parent.$index][$index].topicBean=t">
+                            <div class="col-lg-1">
+                                <input type="checkbox" name="" ng-model="
+                                score[$parent.$index][$index].isChecked"  ng-true-value="1" ng-false-value="0">
+                            </div>
+                            <div class="col-lg-4" ng-model="score[$parent.$index][$index].topicBean">{{t.topicName}}</div>
+                            <div class="col-lg-2">
+                                <input ng-disabled="score[$parent.$index][$index].isChecked" class="form-control padding-left-10" type="number" name="" ng-model="score[$parent.$index][$index].score" min="0" max="5">
+                            </div>
+                            <div class="col-lg-5">
+                                <textarea ng-disabled="score[$parent.$index][$index].isChecked" class="form-control" ng-model="score[$parent.$index][$index].comments" rows="1" id="comment" placeholder="Comments" ng-required="required"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{screeningForm.$valid}}
+            <input ng-disabled="onboardingWOScreeningForm.$valid" class="btn md-raised" type="submit" ng-click="submit()" style="float:right;">
+        </div>
+    </form>
+</div>

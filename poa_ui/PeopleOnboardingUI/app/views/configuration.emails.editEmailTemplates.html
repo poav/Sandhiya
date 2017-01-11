@@ -1,0 +1,73 @@
+
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading">Edit Email Template</div>
+
+		<div class="panel-body">
+		
+			<div class="form-group">
+				<div>
+					<div class="emailTemplateHeading">
+					<h5>
+						<u>Subject</u>
+						</h5>
+					</div>
+					
+					<div >
+					<input type="textarea" name="emailSubject" class="form-control" contenteditable="true"
+			     		ng-model="editedObject.subject">
+						
+					</div>
+		
+				</div>
+			</div>
+
+			<div class="form-group" ng-show="editedObject.attachments[0] !='No Attachments'">		
+				<div>
+					<div class="emailTemplateHeading">
+						<h5>
+						<u>Attachments</u>
+						</h5>
+					</div>
+					
+			     	<div class="demo-select-all-checkboxes" flex="100" ng-repeat="attachment in editedObject.attachments">
+			     	<input type="checkbox" ng-checked="selected[$index]" ng-click="toggle($index)"
+           ng-true-value="'true'" ng-false-value="'false'">
+           {{ attachment }}
+             
+          </div>
+
+				</div>    
+			</div>
+
+			<div class="form-group">		
+				<div>
+					<div class="emailTemplateHeading">
+						<h5>
+						<u>Content</u>
+						</h5>
+					</div>
+					<div name="emailContent"  contenteditable="true"
+			     		ng-bind-html="editedObject.content"
+			     		ng-blur="saveHTML($event)">
+
+					</div>
+			
+				</div>    
+			</div>
+
+			<div>
+				<button type="button" ng-click="edit()" class="btn btn-default" style="float: right; position: relative;"
+					 ng-disabled="editForm.$invalid">Save</button>
+				
+				<button type="button" ng-click="cancel()" class="btn btn-default" style="float: right; position: relative;">Cancel</button>
+
+			</div>
+		
+		</div>
+
+	</div>
+			
+</div>
+			 
+	

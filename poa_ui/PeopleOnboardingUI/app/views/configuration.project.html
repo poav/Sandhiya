@@ -1,0 +1,12 @@
+<div class="container-fluid">
+    <div class="row search-div" ng-controller="toastController">
+        <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class=" search form-control" ng-model="search" type="text" placeholder="Search" ng-click="yetToImplementToast()">
+    </div>
+    <div ui-grid="gridOptions" ui-grid-selection class="grid"></div>
+    <div class="input-container">
+        <!-- <md-button class="md-primary md-raised" ng-click="add($event)"> Dialog</md-button>
+ -->
+        <input class="btn btn-default" type="button" value="Add Project" ng-click="add()" align="center" style="float: left; ">
+    </div>
+</div>

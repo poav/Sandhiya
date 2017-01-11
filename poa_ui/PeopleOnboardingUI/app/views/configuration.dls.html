@@ -1,0 +1,18 @@
+<div layout="row" style="float:right; width:30%;">
+	<!-- <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+    <input class="form-control" ng-model="search" type="text" placeholder="Search" >
+</div>
+<br>
+ 
+<div>
+	<h1 >Dls</h1>
+</div>
+
+<div>	
+	<div ui-grid="gridOptions" ui-grid-auto-resize ui-grid-pagination class="grid"></div>
+</div>
+
+<div class="input-container">
+<md-button ng-click="add()" class="md-raised md-primary" style="float:right; margin-right:20px;">New Dl</md-button>
+</div>	
+

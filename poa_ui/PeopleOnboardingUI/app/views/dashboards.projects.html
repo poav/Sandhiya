@@ -1,0 +1,265 @@
+
+	<md-input-container>
+	    <label>Quarter</label>
+	    <md-select ng-model="selectedProject">
+	      <md-option ng-repeat="project in projectList" value="{{project}}" >
+	        {{project}}
+	      </md-option>
+	    </md-select>
+	</md-input-container>
+
+	<md-input-container>
+	    <label>Year</label>
+	    <md-select ng-model="selectedYear">
+	      <md-option ng-repeat="year in yearsList" value="{{year}}" >
+	        {{year}}
+	      </md-option>
+	    </md-select>
+	</md-input-container>
+
+	<input class="btn btn-default" type="button" value="Show" ng-click="show()" align="center" >
+	<input class="btn btn-default" type="button" value="Export" ng-click="export()" align="center" >
+<!-- 	<input class="search form-control" ng-model="search" type="text" style="float:right;" placeholder="Search" >
+ -->
+	
+
+
+
+
+
+
+<div ui-grid="gridOptions"  ui-grid-pagination ui-grid-selection class="grid"></div>
+<h3>Monthly Project Budget </h3>
+<br>
+<div layout="row">
+
+	<div  flex="10">
+		<h5></h5>
+	</div>
+
+	<div flex="90" layout="row">
+	<div flex="5" align="center">
+		<label >Jan</label>
+
+	</div>
+
+	<div flex="5" align="center">
+		<label >Feb</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Mar</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Q1</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Apr</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >May</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Jun</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Q2</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Jul</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Aug</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Sep</label>
+
+	</div>
+
+	<div flex="5" align="center">
+		<label >Q3</label>
+
+	</div>
+
+	<div flex="5" align="center">
+		<label >Oct</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Nov</label>
+
+	</div>
+	<div flex="5" align="center">
+		<label >Dec</label>
+
+	</div>
+
+	<div flex="5" align="center">
+		<label >Q4</label>
+
+	</div>
+	</div>
+	
+
+</div>
+
+
+<div layout="row">
+
+	<div  flex="20">
+		<h5>Project Budget</h5>
+	</div>
+
+	<div>
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="N.A" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="N.A" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="N.A" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="Labour" ng-disabled="true">
+		<input flex="5" value="N.A" ng-disabled="true">
+
+
+
+	</div>
+
+
+</div>
+
+<div layout="row">
+
+	<div  flex="20">
+		<h5>Project Budget</h5>
+	</div>
+
+	<div>
+		<input flex="5" ng-model="budgetSummaryBean.jan.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.feb.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.march.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.q1">
+
+		<input flex="5" ng-model="budgetSummaryBean.april.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.may.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.june.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.q2">
+
+		<input flex="5" ng-model="budgetSummaryBean.july.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.aug.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.sept.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.q3">
+
+		<input flex="5" ng-model="budgetSummaryBean.oct.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.nov.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.dec.projectMonthlyBudgetValue">
+		<input flex="5" ng-model="budgetSummaryBean.q4">
+
+	</div>
+
+
+</div>
+
+<div layout="row">
+
+	<div  flex="20">
+		<h5>Project Actual</h5>
+	</div>
+
+	<div >
+
+		<input flex="5" ng-model="actualSummaryBean.jan">
+		<input flex="5" ng-model="actualSummaryBean.feb">
+		<input flex="5" ng-model="actualSummaryBean.march">
+		<input flex="5" ng-model="actualSummaryBean.q1">
+
+		<input flex="5" ng-model="actualSummaryBean.april">
+		<input flex="5" ng-model="actualSummaryBean.may">
+		<input flex="5" ng-model="actualSummaryBean.june">
+		<input flex="5" ng-model="actualSummaryBean.q2">
+
+		<input flex="5" ng-model="actualSummaryBean.july">
+		<input flex="5" ng-model="actualSummaryBean.aug">
+		<input flex="5" ng-model="actualSummaryBean.sept">
+		<input flex="5" ng-model="actualSummaryBean.q3">
+
+		<input flex="5" ng-model="actualSummaryBean.oct">
+		<input flex="5" ng-model="actualSummaryBean.nov">
+		<input flex="5" ng-model="actualSummaryBean.dec">
+		<input flex="5" ng-model="actualSummaryBean.q4">
+
+	</div>
+
+
+</div>
+
+<div layout="row">
+
+	<div  flex="20">
+		<h5>Calculated Budget</h5>
+	</div>
+
+	<div>
+		<input flex="5" ng-value="actualSummaryBean.jan-budgetSummaryBean.jan.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.feb-budgetSummaryBean.feb.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.march-budgetSummaryBean.march.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.q1-budgetSummaryBean.q1">
+
+		<input flex="5" ng-value="actualSummaryBean.april-budgetSummaryBean.april.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.may-budgetSummaryBean.may.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.june-budgetSummaryBean.june.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.q2-budgetSummaryBean.q2">
+
+		<input flex="5" ng-value="actualSummaryBean.july-budgetSummaryBean.july.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.aug-budgetSummaryBean.aug.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.sept-budgetSummaryBean.sept.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.q3-budgetSummaryBean.q3">
+
+		<input flex="5" ng-value="actualSummaryBean.oct-budgetSummaryBean.oct.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.nov-budgetSummaryBean.nov.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.dec-budgetSummaryBean.dec.projectMonthlyBudgetValue">
+		<input flex="5" ng-value="actualSummaryBean.q4-budgetSummaryBean.q4">
+
+	</div>
+
+
+</div>
+
+<md-button ng-click="updateMonthlyProjectDashBoard()">
+	Save
+</md-button>
+<script>
+function myFunction() {
+    alert("You right-clicked inside the div!");
+}
+</script>
+
+
+<div oncontextmenu="myFunction()" contextmenu="mymenu">
+<p>Right-click inside this box to see the context menu!
+
+<menu type="context" id="mymenu">
+  <menuitem label="Refresh" onclick="window.location.reload();" icon="ico_reload.png"></menuitem>
+  <menu label="Share on...">
+    <menuitem label="Twitter" icon="ico_twitter.png" onclick="window.open('//twitter.com/intent/tweet?text=' + window.location.href);"></menuitem>
+    <menuitem label="Facebook" icon="ico_facebook.png" onclick="window.open('//facebook.com/sharer/sharer.php?u=' + window.location.href);"></menuitem>
+  </menu>
+  <menuitem label="Email This Page" onclick="window.location='mailto:?body='+window.location.href;"></menuitem>
+</menu>
+
+</div>

@@ -1,0 +1,27 @@
+<div  class="container-fluid">
+<div class="row" >
+       <!--   <md-icon md-svg-src="styles/icons/search.svg" class="searchIcon"></md-icon> -->
+        <input class="search form-control" ng-model="search" type="text" placeholder="Search" >
+</div>
+<div>	
+	<div ui-grid="gridOptions" class="grid" ui-grid-auto-resize ui-grid-pagination ></div>
+</div>
+<div class="inputValidation">
+<h5 style=" align: center;">{{message}}</h5>
+</div>
+<div class="input-container">
+
+	<input class="btn btn-default" type="button" value="New Team" ng-click="add()" align="center" style="float: left; ">
+
+</div>
+<div class="panel panel-default">
+
+	<div ng-show="errorMessageCheck==true" class="errorMsgNotification">
+		<h4>{{errorMessage}}</h4>
+	</div>
+
+	<div ng-show="successMessageCheck==true" class="successMessageNotification">
+		<h4>{{successMessage}}</h4>
+	</div>
+
+</div>	

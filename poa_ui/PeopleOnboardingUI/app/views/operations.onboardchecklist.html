@@ -1,0 +1,9 @@
+<div class="container-fluid">
+    <div class="row">
+        <input type="text" class=" search form-control" placeholder="Search" ng-model="search" style="float:right;">
+    </div>
+
+    <div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection class="gridTable"></div>
+    <input class="btn btn-default big-btn" type="button" value="Request Document resubmission " ng-click="requestDocumentResubmission()" align="center" style="float: left; ">
+    <input class="btn btn-default big-btn" type="button" value="Resend BGC Documents to candidate" ng-click="resendBgcDocuments()" align="center" style="float: left; ">
+</div>

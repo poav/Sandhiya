@@ -1,0 +1,105 @@
+<md-dialog aria-label="Mango (Fruit)" flex>
+  <form flex>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Update Issue Tracker</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content flex-gt-md>
+      
+
+    <div>
+      <form name="userForm">
+ 		
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>FeedBack Provider
+              </h4>
+            </label>
+            <input ng-model="editedObject.feedbackProvider" >
+          	</md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>FeedBack Type
+              </h4>
+            </label>
+            <input ng-model="editedObject.feedbackType" >
+          	</md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>FeedBack Summary
+              </h4>
+            </label>
+            <input ng-model="editedObject.summary" >
+          	</md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>FeedBack Status
+              </h4>
+            </label>
+            <md-select ng-model="editedObject.status">
+          		<md-option ng-repeat="status in statusList" value="{{status}}" >
+            				{{status}}
+          		</md-option>
+        	</md-select>
+          	</md-input-container>
+
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Fixed Date
+              </h4>
+            </label>
+            <input ng-model="editedObject.fixedDate" >
+          	</md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Comments
+              </h4>
+            </label>
+            <input ng-model="editedObject.fixedComments" >
+          	</md-input-container>
+        </div>
+
+        <div layout-gt-md="row">
+          	<md-input-container class="md-block" flex-gt-sm>
+            <label>
+              <h4>Target Release
+              </h4>
+            </label>
+            <input ng-model="editedObject.targetRelease" >
+          	</md-input-container>
+        </div>   
+      </form>
+    </div>
+     
+    </md-dialog-content>
+    <md-dialog-actions layout="row">  
+      <span flex></span>
+      <md-button ng-click="update(editedObject)" style="margin-right:20px;" >
+        Update
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
+
